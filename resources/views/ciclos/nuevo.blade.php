@@ -12,7 +12,8 @@
 
         <div class="card-body">
 
-            <form action="" method="POST">
+            <form action="{{ action([App\Http\Controllers\CicloController::class, 'almacenar']) }}" method="POST">
+                @csrf
 
                 <div class="row mb-2">
                     <div class="col-2">

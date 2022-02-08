@@ -15,11 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get ('/', function(){
     return view('index');
 });
 
-Route::get('/ciclos', function () {
+Route::get('/ciclos', [App\Http\Controllers\CicloController::class, 'index']);
+
+Route::post('/nuevo-ciclo', [App\Http\Controllers\CicloController::class, 'almacenar']);
+
+Route::get('/nuevo-ciclo', [App\Http\Controllers\CicloController::class, 'crear']);
+
+Route::post('/ciclos/{id}', [App\Http\Controllers\CicloController::class, 'destruir']);
+
+/*Route::get('/ciclos', function () {
     $ciclos = [];
     $ciclo = new Ciclo(1, "DAW", "Desarrollo de aplicaciones web");
     array_push($ciclos, $ciclo);
@@ -27,10 +35,9 @@ Route::get('/ciclos', function () {
     array_push($ciclos, $ciclo);
     $datos['ciclos'] = $ciclos;
     return view('ciclos.index', $datos);
-});
+});*/
 
 Route::get('/cursos', function(){
-    
     $cursos = [];
     $curso = new Curso(1, "DAW", "Desarrollo de aplicaciones web de primero mañana A", "DAW");
     array_push($cursos, $curso);
@@ -45,7 +52,7 @@ Route::get('/cursos', function(){
     return view('cursos.index', $datos);
 });
 
-Route::get('/nuevo-ciclo', function(){
-    return view('ciclos.nuevo');
-});
+
+
+
 

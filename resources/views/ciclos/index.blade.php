@@ -3,7 +3,7 @@
 @section('titulo', 'Ciclos')
 
 @section('contenido')
-    @if (empty($ciclos))
+    @if (empty(session('ciclos')))
         <div class="alert bg-primary text-white opacity-75 mt-3" role="">
             Aún no hay ciclos dados de alta.
         </div>
@@ -18,13 +18,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($ciclos as $value)
+                @foreach (session('ciclos') as $value)
                     <tr>
                         <td>{{$value->getId()}}</th>
                         <td>{{$value->getSiglas()}}</td>
                         <td>{{$value->getNombre()}}</td>
                         <td>
-                            <form action="" method="get">
+                            <form action="{{ action([App\Http\Controllers\CicloController::class, 'destruir'], [$value->getId()]) }}" method="POST">
+                                @csrf
                                 <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i> Borrar</button>
                             </form>
                         </td>
@@ -40,8 +41,4 @@
     </button>
 
 @endsection
-
-<?php
-    //{{ action([App\Http\Controllers\CiclosController::class, 'destroy']) }}
-?>
 
