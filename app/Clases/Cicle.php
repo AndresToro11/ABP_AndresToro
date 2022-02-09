@@ -1,6 +1,6 @@
 <?php
     namespace App\Clases;
-    class Ciclo{
+    class Cicle{
         private $id;
         private $siglas;
         private $nombre;
@@ -42,7 +42,7 @@
             return $this->nombre;
         }
 
-        
+
 
     }
 ?>

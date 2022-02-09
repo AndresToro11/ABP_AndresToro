@@ -1,6 +1,6 @@
 <?php
     namespace App\Clases;
-    class Curso{
+    class Curs{
         private $id;
         private $siglas;
         private $nombre;
