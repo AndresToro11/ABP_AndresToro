@@ -4,8 +4,16 @@
 
 @section('contenido')
     @if (empty(session('ciclos')))
-        <div class="alert bg-primary text-white opacity-75 mt-3" role="">
-            Aún no hay ciclos dados de alta.
+    <div class="card mt-4">
+            <div class="card-body">
+                <div class="card-title">
+                    Ciclos
+                </div>
+
+                <div class="alert bg-primary text-white opacity-75 mt-3" role="">
+                    No hay ciclos para la busqueda realizada.
+                </div>
+            </div>
         </div>
 
     @else
@@ -37,7 +45,7 @@
     </table>
 
     <button class="btn btn-primary position-absolute bottom-0 end-0 m-5">
-        <a id="boton" class="text-white text-decoration-none" href="/ABP_AndresToro/public/nuevo-ciclo"><i class="fas fa-plus"></i> Nuevo ciclo</a>
+        <a id="boton" class="text-white text-decoration-none" href="/ABP_AndresToro/public/nuevo-ciclo"><i class="fas fa-plus-circle"></i> Nuevo ciclo</a>
     </button>
 
 @endsection

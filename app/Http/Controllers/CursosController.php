@@ -13,9 +13,24 @@ class CursosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view ('cursos.index');
+        $actiu = $request->input('actiu');
+        var_dump($actiu);
+        if($actiu == 'on'){
+            $cursos = Curs::where('actiu', '=', true)
+                    ->orderBy('nom', 'desc')
+                    ->paginate(6)
+                    ->withQueryString();
+        }
+        else{
+            $cursos = Curs::orderBy('nom', 'desc')
+                        ->paginate(6);
+        }
+        
+
+
+    return view ('cursos.index', compact('cursos'));
     }
 
     /**
