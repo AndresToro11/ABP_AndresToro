@@ -16,7 +16,6 @@ class CursosController extends Controller
     public function index(Request $request)
     {
         $actiu = $request->input('actiu');
-        var_dump($actiu);
         if($actiu == 'on'){
             $cursos = Curs::where('actiu', '=', true)
                     ->orderBy('nom', 'desc')
@@ -27,10 +26,8 @@ class CursosController extends Controller
             $cursos = Curs::orderBy('nom', 'desc')
                         ->paginate(6);
         }
-        
 
-
-    return view ('cursos.index', compact('cursos'));
+        return view ('cursos.index', compact('cursos'));
     }
 
     /**
@@ -40,7 +37,7 @@ class CursosController extends Controller
      */
     public function create()
     {
-        //
+        return view('cursos.nuevo');
     }
 
     /**
@@ -51,7 +48,7 @@ class CursosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -96,6 +93,6 @@ class CursosController extends Controller
      */
     public function destroy(Curs $cursos)
     {
-        //
+        
     }
 }

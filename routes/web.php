@@ -3,6 +3,7 @@
 use App\Clases\Curs;
 use App\Clases\Cicle;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CursosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,11 +35,13 @@ Route::post('/ciclos/{id}', [App\Http\Controllers\CicleController::class, 'destr
 
 //----------------------- Cursos --------------------------------------------------------
 
-Route::get('/cursos', [App\Http\Controllers\CursosController::class, 'index']);
+Route::resource('curs', CursosController::class);
+
+//Route::get('/cursos', [App\Http\Controllers\CursosController::class, 'index']);
 
 //------------------------------ Modulos --------------------------------------------------
 
-Route::get('/cursos', [App\Http\Controllers\CursosController::class, 'index']);
+
 
 //-------------------------------------------------------------------------------------------
 

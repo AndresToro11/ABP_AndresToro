@@ -19,7 +19,7 @@
                         
                     <div class="col-9">
                         <select class="form-select" aria-label="Default select example" name="cicles" id="cicles">
-                            <option value="">Tos els cicles</option>
+                            <option value="">Tos els cursos</option>
                         </select>
                     </div>
 
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="col-1">
-                        <button class="btn btn-secondary" type="submit"><i class="fas fa-search"></i> Buscar</button>
+                        <button class="btn btn-secondary d-flex" type="submit"><i class="fas fa-search mt-1"></i> Buscar</button>
                     </div>
 
                 </div>
@@ -65,11 +65,30 @@
                             </td>
                             <td >
                                 <div class="btn-group">
-                                    <form action="" method="post">
+                                    <form action="" method="">
                                     <button class="btn btn-secondary" type="submit"><i class="fas fa-edit"></i> Editar</button>
-                                
 
-                                <button class="btn btn-danger ms-1"><i class="fas fa-trash"></i> Borrar</button>
+                                    <button class="btn btn-danger ms-1" type="button" id="borrarBoton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-sigles="{{ $curso->sigles }}"><i class="fas fa-trash"></i> Borrar</button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Borrar curso</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X Cerrar</button>
+                                                <form action="" method="POST">
+                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Borrar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </form>
                                 </div>
                                 
@@ -84,10 +103,13 @@
         </div>
     @endif
         <button class="btn btn-primary position-absolute bottom-0 end-0 m-5">
-            <a id="boton" class="text-white text-decoration-none" href="/ABP_AndresToro/public/nuevo-ciclo"><i class="fas fa-plus-circle"></i> Nuevo ciclo</a>
+            <a id="boton" class="text-white text-decoration-none" href="{{ url('curs/create') }}"><i class="fas fa-plus-circle"></i> Nuevo curso</a>
         </button>
+
+        <script src="/ABP_AndresToro/resources/js/modal.js"></script>
 
 @endsection
 
 <?php
+//{{ action([App\Http\Controllers\CursosController::class, 'destroy'], [$curso]) }}
 ?>
