@@ -25,13 +25,7 @@ Route::get ('/', function(){
 
  //--------------------- Ciclos ---------------------------------------------------------
 
-Route::get('/ciclos', [App\Http\Controllers\CicleController::class, 'index']);
-
-Route::post('/nuevo-ciclo', [App\Http\Controllers\CicleController::class, 'almacenar']);
-
-Route::get('/nuevo-ciclo', [App\Http\Controllers\CicleController::class, 'crear']);
-
-Route::post('/ciclos/{id}', [App\Http\Controllers\CicleController::class, 'destruir']);
+ Route::resource('cicle', CiclosController::class);
 
 //----------------------- Cursos --------------------------------------------------------
 

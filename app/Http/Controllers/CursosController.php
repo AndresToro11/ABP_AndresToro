@@ -48,7 +48,18 @@ class CursosController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $curso = new Curs();
+
+        //$curso->id = 'NULL';
+        $curso->sigles = $request->input('siglas');
+        $curso->nom = $request->input('nombre');
+        $curso->cicles_id = $request->input('ciclo');
+
+        $curso->actiu = ($request->input('activo') == 'activo');
+
+        $curso->save();
+
+        return redirect()->action([CursosController::class, 'index']);
     }
 
     /**
@@ -91,8 +102,11 @@ class CursosController extends Controller
      * @param  \App\Models\Cursos  $cursos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Curs $cursos)
+    public function destroy(Curs $cur)
     {
+        var_dump('hola');
+        $cur->delete();
         
+        return redirect()->action([CursosController::class, 'index']);
     }
 }

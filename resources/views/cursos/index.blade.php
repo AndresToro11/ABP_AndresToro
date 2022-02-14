@@ -68,26 +68,8 @@
                                     <form action="" method="">
                                     <button class="btn btn-secondary" type="submit"><i class="fas fa-edit"></i> Editar</button>
 
-                                    <button class="btn btn-danger ms-1" type="button" id="borrarBoton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-sigles="{{ $curso->sigles }}"><i class="fas fa-trash"></i> Borrar</button>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Borrar curso</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X Cerrar</button>
-                                                <form action="" method="POST">
-                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Borrar</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <button class="btn btn-danger ms-1" type="button" id="borrarBoton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-sigles="{{ $curso->sigles }}" data-action= "{{ action([App\Http\Controllers\CursosController::class, 'destroy'], ['cur' => $curso->id]) }}"><i class="fas fa-trash"></i> Borrar</button>
+                               
 
                             </form>
                                 </div>
@@ -105,6 +87,31 @@
         <button class="btn btn-primary position-absolute bottom-0 end-0 m-5">
             <a id="boton" class="text-white text-decoration-none" href="{{ url('curs/create') }}"><i class="fas fa-plus-circle"></i> Nuevo curso</a>
         </button>
+
+
+        <!-- Modal para borrar -->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Borrar curso</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X Cerrar</button>
+                        <form id="formBorrar" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Borrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="/ABP_AndresToro/resources/js/modal.js"></script>
 

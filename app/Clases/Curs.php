@@ -2,15 +2,17 @@
     namespace App\Clases;
     class Curs{
         private $id;
-        private $siglas;
-        private $nombre;
-        private $siglasCiclo;
+        private $sigles;
+        private $nom;
+        private $cicles_id;
+        private $actiu;
 
-        function __construct($id, $siglas, $nombre, $siglasCiclo){
+        function __construct($id, $sigles, $nom, $cicles_id, $actiu){
             $this->id = $id;
-            $this->siglas = $siglas;
-            $this->nombre = $nombre;
-            $this->siglasCiclo = $siglasCiclo;
+            $this->sigles = $sigles;
+            $this->nom = $nom;
+            $this->cicles_id = $cicles_id;
+            $this->actiu = $actiu;
         }
 
 
@@ -18,16 +20,20 @@
             return $this->id;
         }
 
-        public function getSiglas(){
-            return $this->siglas;
+        public function getSigles(){
+            return $this->sigles;
         }
 
-        public function getNombre(){
-            return $this->nombre;
+        public function getNom(){
+            return $this->nom;
         }
 
-        public function getSiglasCiclo(){
-            return $this->siglasCiclo;
+        public function getCicles_id(){
+            return $this->cicles_id;
+        }
+
+        public function getActiu(){
+            return $this->actiu;
         }
 
 
@@ -37,21 +43,26 @@
             return $this->id;
         }
 
-        public function setSiglas($siglas){
-            $this->siglas = $siglas;
+        public function setSigles($sigles){
+            $this->sigles = $sigles;
 
-            return $this->siglas;
+            return $this->sigles;
         }
 
-        public function setNombre($nombre){
-            $this->nombre = $nombre;
-            return $this->nombre;
+        public function setNom($nom){
+            $this->nom = $nom;
+            return $this->nom;
         }
 
-        public function setSiglasCiclo($siglasCiclo){
-            $this->siglasCiclo = $siglasCiclo;
+        public function setActiu($actiu){
+            $this->actiu = $actiu;
+            return $this->actiu;
+        }
 
-            return $this->siglasCiclo;
+        public function setCicles_id($cicles_id){
+            $this->cicles_id = $cicles_id;
+
+            return $this->cicles_id;
         }
     }
 ?>

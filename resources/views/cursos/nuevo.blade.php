@@ -10,8 +10,8 @@
                 Curs
             </h5>
 
-            <form action="" method="">
-
+            <form action=" {{ action([App\Http\Controllers\CursosController::class, 'store']) }} " method="POST">
+                @csrf
                 <div class="row mb-2">
                     <div class="col-2">
                         <label class="form-label" for="siglas">Sigles</label>
@@ -23,28 +23,28 @@
 
                 <div class="row mb-2">
                     <div class="col-2">
-                        <label class="form-label" for="nom">Nom</label>
+                        <label class="form-label" for="nombre">Nom</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="nom" id="nom" placeholder="Nom">
+                        <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nom">
                     </div>
                 </div>
 
                 <div class="row mb-2">
                     <div class="col-2">
-                        <label class="form-label" for="cicle">Cicle</label>
+                        <label class="form-label" for="ciclo">Cicle</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="cicle" id="cicle" placeholder="Cicle">
+                        <input class="form-control" type="text" name="ciclo" id="ciclo" placeholder="Cicle">
                     </div>
                 </div>
 
                 <div class="row mb-2">
                     <div class="col-2">
-                        <label class="form-label" for="actiu">Actiu</label>
+                        <label class="form-label" for="activo">Actiu</label>
                     </div>
                     <div class="col-1">
-                        <input class="form-check-input" type="checkbox" name="actiu" id="actiu">
+                        <input class="form-check-input" type="checkbox" name="activo" id="activo" value="activo">
                     </div>
                 </div>
 
