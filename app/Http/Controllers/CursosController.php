@@ -24,7 +24,7 @@ class CursosController extends Controller
         }
         else{
             $cursos = Curs::orderBy('nom', 'desc')
-                        ->paginate(6);
+                            ->paginate(6);
         }
 
         return view ('cursos.index', compact('cursos'));
@@ -79,9 +79,9 @@ class CursosController extends Controller
      * @param  \App\Models\Cursos  $cursos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Curs $cursos)
+    public function edit(Curs $cur)
     {
-        //
+        return view('cursos.editar', compact('cur'));
     }
 
     /**
@@ -93,7 +93,7 @@ class CursosController extends Controller
      */
     public function update(Request $request, Curs $cursos)
     {
-        //
+
     }
 
     /**
@@ -106,7 +106,7 @@ class CursosController extends Controller
     {
         var_dump('hola');
         $cur->delete();
-        
+
         return redirect()->action([CursosController::class, 'index']);
     }
 }

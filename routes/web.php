@@ -25,7 +25,7 @@ Route::get ('/', function(){
 
  //--------------------- Ciclos ---------------------------------------------------------
 
- Route::resource('cicle', CiclosController::class);
+ //Route::resource('cicle', CiclosController::class);
 
 //----------------------- Cursos --------------------------------------------------------
 
