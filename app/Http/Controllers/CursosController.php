@@ -104,7 +104,6 @@ class CursosController extends Controller
      */
     public function destroy(Curs $cur)
     {
-        var_dump('hola');
         $cur->delete();
         
         return redirect()->action([CursosController::class, 'index']);
