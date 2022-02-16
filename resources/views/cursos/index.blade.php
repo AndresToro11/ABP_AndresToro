@@ -3,7 +3,7 @@
 @section('titulo', 'Cursos')
 
 @section('contenido')
-    
+
     <div class="card mt-4">
         <div class="card-body">
             <h5 class="card-title">
@@ -16,7 +16,7 @@
                     <div class="col-1">
                         <label for="cicles">Cicle</label>
                     </div>
-                        
+
                     <div class="col-9">
                         <select class="form-select" aria-label="Default select example" name="cicles" id="cicles">
                             <option value="">Tos els cursos</option>
@@ -58,22 +58,25 @@
                             <td>
                                 @if($curso->actiu == 1)
                                     <input class="form-check-input" type="checkbox" name="" id="" checked disabled>
-                                
+
                                 @else
                                     <input class="form-check-input" type="checkbox" name="" id="" disabled>
                                 @endif
                             </td>
                             <td >
-                                <div class="btn-group">
-                                    <form action="" method="">
-                                    <button class="btn btn-secondary" type="submit"><i class="fas fa-edit"></i> Editar</button>
+                                <form action="{{ action([App\Http\Controllers\CursosController::class, 'edit'], ['cur' => $curso->id]) }}">
+                                    @csrf
+                                    <button class="btn btn-primary" type="submit">
+                                            <i class="fas fa-edit"></i> Editar
+                                    </button>
+                                </form>
 
-                                    <button class="btn btn-danger ms-1" type="button" id="borrarBoton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-sigles="{{ $curso->sigles }}" data-action= "{{ action([App\Http\Controllers\CursosController::class, 'destroy'], ['cur' => $curso->id]) }}"><i class="fas fa-trash"></i> Borrar</button>
-                               
+                                    <button class="btn btn-danger ms-1" type="button" id="borrarBoton" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" data-bs-sigles="{{ $curso->sigles }}"
+                                    data-action="{{ action([App\Http\Controllers\CursosController::class, 'destroy'], ['cur' => $curso->id]) }}">
+                                        <i class="fas fa-trash"></i> Borrar
+                                    </button>
 
-                            </form>
-                                </div>
-                                
 
                             </td>
                         </tr>
@@ -99,7 +102,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X Cerrar</button>
@@ -118,5 +121,4 @@
 @endsection
 
 <?php
-//{{ action([App\Http\Controllers\CursosController::class, 'destroy'], [$curso]) }}
 ?>
