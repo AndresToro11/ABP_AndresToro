@@ -1,16 +1,15 @@
 @extends('layouts.plantilla')
 
-@section('titulo', 'Nuevo curso')
+@section('titulo', 'Editar curso')
 
 @section('contenido')
-
     <div class="card mt-4">
         <div class="card-body">
             <h5 class="card-title">
                 Curs
             </h5>
 
-            <form action="" method="POST">
+            <form action="{{ action([App\Http\Controllers\CursosController::class, 'update'], ['cur' => $cur->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row mb-2">
@@ -18,25 +17,31 @@
                         <label class="form-label" for="siglas">Sigles</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="siglas" id="siglas" value="{{ $cur->sigles }}">
+                        <input class="form-control" type="text" name="sigles" id="sigles" value="{{ $cur->sigles }}">
                     </div>
                 </div>
 
                 <div class="row mb-2">
                     <div class="col-2">
-                        <label class="form-label" for="nombre">Nom</label>
+                        <label class="form-label" for="nom">Nom</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="nombre" id="nombre" value="{{ $cur->nom }}">
+                        <input class="form-control" type="text" name="nom" id="nom" value="{{ $cur->nom }}">
                     </div>
                 </div>
 
                 <div class="row mb-2">
                     <div class="col-2">
-                        <label class="form-label" for="ciclo">Cicle</label>
+                        <label class="form-label" for="cicle">Cicle</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="ciclo" id="ciclo" value="{{ $cur->cicle->sigles }}">
+                        <select name="cicle" id="cicle" class="form-select" aria-label="Default select example">
+                            @foreach($cicles as $cicle)
+
+                                <option value="{{ $cicle->id }}" @if($cicle->id == $cur->cicles_id) selected  @endif >  {{ $cicle->sigles }}  </option>
+
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -45,7 +50,7 @@
                         <label class="form-label" for="activo">Actiu</label>
                     </div>
                     <div class="col-1">
-                        <input class="form-check-input" type="checkbox" name="activo" id="activo" value="{{ $cur->actiu }}">
+                        <input class="form-check-input" type="checkbox" name="actiu" id="actiu" @if($cur->actiu == true) checked @endif>
                     </div>
                 </div>
 
@@ -65,5 +70,5 @@
 @endsection
 
 <?php
- //{{ action([App\Http\Controllers\CursosController::class, 'update']) }}
+ //@if($cicle->id == 1) selected @endif >{{ $cicle->sigles }}
  ?>

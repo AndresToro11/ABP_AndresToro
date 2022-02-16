@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curs;
-use App\Http\Controllers\Controller;
+use App\Models\Cicle;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CursosController extends Controller
 {
@@ -23,7 +24,7 @@ class CursosController extends Controller
                     ->withQueryString();
         }
         else{
-            $cursos = Curs::orderBy('nom', 'desc')
+            $cursos = Curs::orderBy('nom', 'asc')
                             ->paginate(6);
         }
 
@@ -37,7 +38,8 @@ class CursosController extends Controller
      */
     public function create()
     {
-        return view('cursos.nuevo');
+        $cicles = Cicle::where('actiu', true)->get();
+        return view('cursos.nuevo', compact('cicles'));
     }
 
     /**
@@ -53,7 +55,7 @@ class CursosController extends Controller
         //$curso->id = 'NULL';
         $curso->sigles = $request->input('siglas');
         $curso->nom = $request->input('nombre');
-        $curso->cicles_id = $request->input('ciclo');
+        $curso->cicles_id = $request->input('cicle');
 
         $curso->actiu = ($request->input('activo') == 'activo');
 
@@ -81,19 +83,27 @@ class CursosController extends Controller
      */
     public function edit(Curs $cur)
     {
-        return view('cursos.editar', compact('cur'));
+        $cicles = Cicle::where('actiu', true)->get();
+        return view('cursos.editar', compact('cur', 'cicles'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cursos  $cursos
+     * @param  \App\Models\Curs  $curs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Curs $cursos)
+    public function update(Request $request, Curs $cur)
     {
+        $cur->nom = $request->input('nom');
+        $cur->sigles = $request->input('sigles');
+        $cur->cicles_id = $request->input('cicle');
+        $cur->actiu = ($request->input('actiu') == 'on');
 
+        $cur->save();
+
+        return redirect()->action([CursosController::class, 'index']);
     }
 
     /**

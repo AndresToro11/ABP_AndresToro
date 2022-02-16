@@ -69,15 +69,12 @@
                                     <button class="btn btn-primary" type="submit">
                                             <i class="fas fa-edit"></i> Editar
                                     </button>
-                                </form>
-
                                     <button class="btn btn-danger ms-1" type="button" id="borrarBoton" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal" data-bs-sigles="{{ $curso->sigles }}"
                                     data-action="{{ action([App\Http\Controllers\CursosController::class, 'destroy'], ['cur' => $curso->id]) }}">
                                         <i class="fas fa-trash"></i> Borrar
                                     </button>
-
-
+                                </form>                          
                             </td>
                         </tr>
                     @endforeach
@@ -105,7 +102,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X Cerrar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
                         <form id="formBorrar" method="POST">
                             @csrf
                             @method('DELETE')

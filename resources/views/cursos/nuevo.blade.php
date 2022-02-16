@@ -17,7 +17,7 @@
                         <label class="form-label" for="siglas">Sigles</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="siglas" id="siglas" placeholder="Sigles">
+                        <input class="form-control" type="text" name="siglas" placeholder="Sigles">
                     </div>
                 </div>
 
@@ -26,16 +26,24 @@
                         <label class="form-label" for="nombre">Nom</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nom">
+                        <input class="form-control" type="text" name="nombre" placeholder="Nom">
                     </div>
                 </div>
 
                 <div class="row mb-2">
                     <div class="col-2">
-                        <label class="form-label" for="ciclo">Cicle</label>
+                        <label class="form-label" for="cicle">Cicle</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="ciclo" id="ciclo" placeholder="Cicle">
+                        <select name="cicle" id="cicle" class="form-select" aria-label="Default select example">
+
+                        <option disabled selected>  Ciclos  </option>
+                            @foreach($cicles as $cicle)
+
+                                <option value="{{ $cicle->id }}">  {{ $cicle->sigles }}  </option>
+
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -44,7 +52,7 @@
                         <label class="form-label" for="activo">Actiu</label>
                     </div>
                     <div class="col-1">
-                        <input class="form-check-input" type="checkbox" name="activo" id="activo" value="activo">
+                        <input class="form-check-input" type="checkbox" name="activo" value="activo">
                     </div>
                 </div>
 
