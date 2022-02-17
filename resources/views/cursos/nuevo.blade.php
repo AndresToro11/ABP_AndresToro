@@ -4,6 +4,8 @@
 
 @section('contenido')
 
+    @include('partials.mensaje')
+    
     <div class="card mt-4">
         <div class="card-body">
             <h5 class="card-title">
@@ -17,7 +19,7 @@
                         <label class="form-label" for="siglas">Sigles</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="siglas" placeholder="Sigles">
+                        <input class="form-control" type="text" name="siglas" placeholder="Sigles" value="{{ old('siglas') }}" autofocus>
                     </div>
                 </div>
 
@@ -26,7 +28,7 @@
                         <label class="form-label" for="nombre">Nom</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" type="text" name="nombre" placeholder="Nom">
+                        <input class="form-control" type="text" name="nombre" placeholder="Nom" value="{{ old('nombre') }}">
                     </div>
                 </div>
 
@@ -51,10 +53,17 @@
                     <div class="col-2">
                         <label class="form-label" for="activo">Actiu</label>
                     </div>
-                    <div class="col-1">
-                        <input class="form-check-input" type="checkbox" name="activo" value="activo">
-                    </div>
+                        <div class="col-1">
+
+                            @if(old('activo') == 'activo')
+                                <input class="form-check-input" type="checkbox" name="activo" value="activo" checked>
+                            @else
+                                <input class="form-check-input" type="checkbox" name="activo" value="activo">
+                            @endif
+                        </div>
                 </div>
+
+
 
                 <div class="row d-flex justify-content-end">
                     <div class="col-6 d-flex justify-content-end">

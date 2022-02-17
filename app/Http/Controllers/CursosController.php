@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Clases\Utilitat;
 use App\Models\Curs;
 use App\Models\Cicle;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
 
 class CursosController extends Controller
 {
@@ -16,19 +18,43 @@ class CursosController extends Controller
      */
     public function index(Request $request)
     {
+
         $actiu = $request->input('actiu');
-        if($actiu == 'on'){
-            $cursos = Curs::where('actiu', '=', true)
-                    ->orderBy('nom', 'desc')
-                    ->paginate(6)
-                    ->withQueryString();
+        $cicle = $request->input('cicle');
+        $cicles = Cicle::where('actiu', true)->orderBy('nom', 'asc')->get();
+
+        if(empty($cicle)){
+            if($actiu == 'on'){
+                $cursos = Curs::where('actiu', true)
+                            ->orderBy('nom', 'desc')
+                            ->paginate(6)
+                            ->withQueryString();
+            }
+            else{
+                $cursos = Curs::orderBy('nom', 'asc')
+                                ->paginate(6);
+            }
         }
         else{
-            $cursos = Curs::orderBy('nom', 'asc')
-                            ->paginate(6);
+            if($actiu == 'on'){
+                $cursos = Curs::where('actiu', true)
+                            ->where('cicles_id', $cicle)
+                            ->orderBy('nom', 'desc')
+                            ->paginate(6)
+                            ->withQueryString();
+            }
+            else{
+                $cursos = Curs::where('cicles_id', $cicle)
+                                ->orderBy('nom', 'asc')
+                                ->paginate(6);
+            }
         }
 
-        return view ('cursos.index', compact('cursos'));
+ 
+
+        
+
+        return view ('cursos.index', compact('cursos', 'cicles'));
     }
 
     /**
@@ -59,9 +85,17 @@ class CursosController extends Controller
 
         $curso->actiu = ($request->input('activo') == 'activo');
 
-        $curso->save();
-
-        return redirect()->action([CursosController::class, 'index']);
+        try{
+           $curso->save(); 
+           $response = redirect()->action([CursosController::class, 'index']);
+        }
+        catch(QueryException $e){
+            $mensaje = Utilitat::errorMessage($e);
+            $request->session()->flash('error', $mensaje);
+            $response = redirect()->action([CursosController::class, 'create'])->withInput();
+        }
+        
+        return $response;
     }
 
     /**

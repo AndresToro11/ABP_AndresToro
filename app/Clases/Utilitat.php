@@ -16,7 +16,7 @@
                     break;
 
                     default:
-                    $mensaje = $e->errorInfo[1] . ' - ' . $e->errorInfo[2];
+                        $mensaje = $e->errorInfo[1] . ' - ' . $e->errorInfo[2];
                     break;
                 }
             }
@@ -39,6 +39,7 @@
                     break;
                 }
             }
+            return $mensaje;
         }
 
     }

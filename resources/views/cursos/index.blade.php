@@ -3,7 +3,6 @@
 @section('titulo', 'Cursos')
 
 @section('contenido')
-
     <div class="card mt-4">
         <div class="card-body">
             <h5 class="card-title">
@@ -18,8 +17,13 @@
                     </div>
 
                     <div class="col-9">
-                        <select class="form-select" aria-label="Default select example" name="cicles" id="cicles">
-                            <option value="">Tos els cursos</option>
+                        <select class="form-select" aria-label="Default select example" name="cicle">
+                            <option value="" disabled selected>Tots els cicles</option>
+
+                            @foreach($cicles as $cicle)
+                                <option value="{{ $cicle->id }}">  {{ $cicle->sigles }} </option>
+                            @endforeach
+
                         </select>
                     </div>
 
@@ -42,17 +46,14 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Siglas</th>
-                            <th scope="col">Nombre</th>
+                            <th scope="col">Sigles</th>
+                            <th scope="col">Nom</th>
                             <th scope="col">Actiu</th>
-                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($cursos as $curso)
                         <tr>
-                            <td>{{ $curso->id }}</th>
                             <td>{{ $curso->sigles }}</td>
                             <td>{{ $curso->nom }}</td>
                             <td>
