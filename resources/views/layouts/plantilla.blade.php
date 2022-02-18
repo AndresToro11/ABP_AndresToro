@@ -25,7 +25,7 @@
                   Datos maestros
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ url('/ciclos') }}">Ciclos</a></li>
+                  <li><a class="dropdown-item" href="{{ url('/cicle') }}">Ciclos</a></li>
                   <li><a class="dropdown-item" href="{{ url('/curs') }}">Cursos</a></li>
                 </ul>
               </li>

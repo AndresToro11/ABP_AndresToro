@@ -49,11 +49,6 @@ class CursosController extends Controller
                                 ->paginate(6);
             }
         }
-
- 
-
-        
-
         return view ('cursos.index', compact('cursos', 'cicles'));
     }
 
@@ -94,7 +89,7 @@ class CursosController extends Controller
             $request->session()->flash('error', $mensaje);
             $response = redirect()->action([CursosController::class, 'create'])->withInput();
         }
-        
+         
         return $response;
     }
 

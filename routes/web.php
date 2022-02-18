@@ -4,6 +4,7 @@ use App\Clases\Curs;
 use App\Clases\Cicle;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursosController;
+use App\Http\Controllers\CicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +26,12 @@ Route::get ('/', function(){
 
  //--------------------- Ciclos ---------------------------------------------------------
 
- //Route::resource('cicle', CiclosController::class);
+ Route::resource('cicle', CicleController::class);
 
 //----------------------- Cursos --------------------------------------------------------
 
 Route::resource('curs', CursosController::class);
 
-//Route::get('/cursos', [App\Http\Controllers\CursosController::class, 'index']);
 
 //------------------------------ Modulos --------------------------------------------------
 
