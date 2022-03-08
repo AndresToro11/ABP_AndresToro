@@ -1,3 +1,3 @@
 Proyecto corto hecho como parte del curso actual que estoy cursando.
 
-Se trata de una aplicación en Bootstrap y Laravel en la cual pongo en practica distintas vistas en donde en algunas de ellas se interactuan con una base de datos, haciendo servir metodologias CRUD.
+Se trata de una pequeña aplicación creada en Bootstrap y Laravel para mostrar los ciclos y cursos relacionados con un centro de estudio. La aplicación logra esto mostrando en distintas vistas datos obtenidos a partir de una base de datos y a su vez interactuar utilizando metodologias CRUD para editar, guardar, borrar u obtener datos.
